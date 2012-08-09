@@ -22,7 +22,7 @@ Config {
   -- of your screen to make it play nicely with stalonetray, which we
   -- want to be taking up the remainer of the space on the right side
   -- of your screen.
-  position = TopW L 95, 
+  position = BottomW L 95,
 
   -- list of commands which gather information about your system for
   -- presentation in the bar. 
@@ -60,6 +60,9 @@ Config {
     -- in Debian and derivatives like Ubuntu. 
     Run Com "~/.xmonad/get-volume" [] "myvolume" 10,
     
+    -- Custom weather information for Geneva, Switzerland
+    Run Weather "LSGG" ["-t"," <tempC>C","-L","-10","-H","30","--normal","green","--high","red","--low","lightblue"] 36000,
+
     -- This line tells xmobar to read input from stdin. That's how we
     -- get the information that xmonad is sending it for display.
     Run StdinReader
@@ -74,5 +77,5 @@ Config {
 
    -- Overall template for the layout of the xmobar contents. Note that
    -- space is significant and can be used to add padding.
-   template = "%StdinReader% }{ %battery% | %cpu% | %memory% | Vol: %myvolume%    <fc=#e6744c>%date%</fc>     "
+   template = "%StdinReader% }{ %battery% | Vol: %myvolume% | %LSGG%    <fc=#e6744c>%date%</fc>     "
 }
