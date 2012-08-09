@@ -41,7 +41,7 @@ import Data.Ratio ((%))
 -}
 
 myModMask            = mod4Mask       -- changes the mod key to "super"
-myFocusedBorderColor = "#ff0000"      -- color of focused border
+myFocusedBorderColor = "#33cc33"      -- color of focused border
 myNormalBorderColor  = "#333333"      -- color of inactive border
 myBorderWidth        = 1              -- width of border around windows
 myTerminal           = "gnome-terminal" -- which terminal software to use
