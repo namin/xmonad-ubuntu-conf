@@ -200,8 +200,8 @@ myKeyBindings =
     , ((0, 0x1008FF13), spawn "amixer -q set Master 10%+")
     , ((myModMask .|. shiftMask, xK_g), gotoMenu)
     , ((myModMask .|. shiftMask, xK_b), bringMenu)
-    , ((myModMask, xK_m), withFocused minimizeWindow)
-    , ((myModMask .|. shiftMask, xK_m), sendMessage RestoreNextMinimizedWin)
+    , ((myModMask, xK_n), withFocused minimizeWindow)
+    , ((myModMask .|. shiftMask, xK_n), sendMessage RestoreNextMinimizedWin)
   ]
 
 
