@@ -17,6 +17,8 @@
 import XMonad
 import XMonad.Actions.WindowBringer
 import XMonad.Layout.Grid
+import XMonad.Layout.Renamed
+import XMonad.Layout.Minimize
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.NoBorders
@@ -116,16 +118,16 @@ defaultLayouts = smartBorders(avoidStruts(
   -- and remaining windows tile on the right. By default each area
   -- takes up half the screen, but you can resize using "super-h" and
   -- "super-l".
-  ResizableTall 1 (3/100) (1/2) []
+  renamed [Replace "tall"] (minimize(ResizableTall 1 (3/100) (1/2) []))
 
   -- Mirrored variation of ResizableTall. In this layout, the large
   -- master window is at the top, and remaining windows tile at the
   -- bottom of the screen. Can be resized as described above.
-  ||| Mirror (ResizableTall 1 (3/100) (1/2) [])
+  ||| renamed [Replace "long"] (minimize(Mirror (ResizableTall 1 (3/100) (1/2) [])))
 
   -- Full layout makes every window full screen. When you toggle the
   -- active window, it will bring the active window to the front.
-  ||| noBorders Full
+  ||| renamed [Replace "full"] (noBorders Full)
 
   -- Grid layout tries to equally distribute windows in the available
   -- space, increasing the number of columns and rows as necessary.
@@ -198,6 +200,8 @@ myKeyBindings =
     , ((0, 0x1008FF13), spawn "amixer -q set Master 10%+")
     , ((myModMask .|. shiftMask, xK_g), gotoMenu)
     , ((myModMask .|. shiftMask, xK_b), bringMenu)
+    , ((myModMask, xK_m), withFocused minimizeWindow)
+    , ((myModMask .|. shiftMask, xK_m), sendMessage RestoreNextMinimizedWin)
   ]
 
 
